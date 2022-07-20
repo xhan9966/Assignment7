@@ -1,28 +1,33 @@
 "use strict";
 
-$(document).ready( () => {
-    const trips = new Trips();
+import * as trips from "./lib_trips.js";
+import { Trip } from "./lib_trips.js";
 
-    $("#add_trip").click( () => {
-        const trip = new Trip( 
-          $("#destination").val(), $("#miles").val(), $("#gallons").val() );
+$(document).ready(() => {
+  $("#add_trip").click(() => {
+    const trip = new Trip(
+      $("#destination").val(),
+      $("#miles").val(),
+      $("#gallons").val()
+    );
 
-        if (trip.isValid) {
-            trips.push(trip); 
-            $("#trip_list").val(trips.toString());
+    if (trip.isValid) {
+      trips.push(trip);
+      $("#trip_list").val(trips.toString());
 
-            $("#destination").val("");
-            $("#miles").val("");
-            $("#gallons").val("");
+      $("#destination").val("");
+      $("#miles").val("");
+      $("#gallons").val("");
 
-            $("#destination").focus();
-        } 
-        else {
-            alert("Please complete all fields.\nMiles and gallons " 
-                + "must be numeric and greater than zero.");
-            $("#destination").select();
-        }
-    });
-    
-    $("#destination").focus();
+      $("#destination").focus();
+    } else {
+      alert(
+        "Please complete all fields.\nMiles and gallons " +
+          "must be numeric and greater than zero."
+      );
+      $("#destination").select();
+    }
+  });
+
+  $("#destination").focus();
 });
