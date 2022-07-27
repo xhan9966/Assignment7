@@ -29,7 +29,7 @@ class Trip {
   }
 }
 
-let trips = [];
+const trips = [];
 
 const push = (trip) => {
   // only allow Trip objects to be added to array
